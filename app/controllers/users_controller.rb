@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :screen_user, only: [:edit, :update]
-  
+
   def show
     @user = User.find(params[:id])
     @books = @user.books
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
 
   private
     def user_params
-       params.require(:user).permit(:name, :introduction, :profile_image)
+       params.require(:user).permit(:name, :introduction, :profile_image, :postcode, :prefecture_name, :address_city, :address_street, :address_building, :latitude, :longitude)
     end
 
     def screen_user
